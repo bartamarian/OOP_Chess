@@ -63,11 +63,18 @@ namespace OOP_Chess
             figures.Add(new Figure(FigureType.Pawn, "E2", FigureColor.White));
             figures.Add(new Figure(FigureType.Pawn, "D2", FigureColor.White));
 
-            lblBoard.Content = "";
+            lblBoard.Text = "";
             foreach(Figure figure in figures)
             {
-                lblBoard.Content += figure.ToString() + "\n";
+                lblBoard.Text += figure.ToString() + "\n";
             }
+        }
+
+        public void DrawBoard(Canvas canvas)
+        {
+            Rectangle rectangle = new Rectangle();
+            rectangle.Width = canvas.Width / 8;
+            rectangle.Height = canvas.Height / 8;
         }
     }
 }
