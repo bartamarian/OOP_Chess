@@ -26,6 +26,7 @@ namespace OOP_Chess
         {
             InitializeComponent();
 
+            figures = new List<Figure>();
             figures.Add(new Figure(FigureType.Rook, "A8", FigureColor.Black));
             figures.Add(new Figure(FigureType.Rook, "H8", FigureColor.Black));
             figures.Add(new Figure(FigureType.Knight, "B8", FigureColor.Black));
@@ -61,6 +62,12 @@ namespace OOP_Chess
             figures.Add(new Figure(FigureType.Pawn, "F2", FigureColor.White));
             figures.Add(new Figure(FigureType.Pawn, "E2", FigureColor.White));
             figures.Add(new Figure(FigureType.Pawn, "D2", FigureColor.White));
+
+            lblBoard.Content = "";
+            foreach(Figure figure in figures)
+            {
+                lblBoard.Content += figure.ToString() + "\n";
+            }
         }
     }
 }
