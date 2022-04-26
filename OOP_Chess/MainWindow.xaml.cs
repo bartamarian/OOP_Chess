@@ -27,8 +27,14 @@ namespace OOP_Chess
             InitializeComponent();
             figures = CreateFigures();
 
+            ShowTextChessBoard();
+            CreateBoard();
+        }
+
+        public void ShowTextChessBoard()
+        {
             lblBoard.Text = "";
-            foreach(Figure figure in figures)
+            foreach (Figure figure in figures)
             {
                 lblBoard.Text += figure.ToString() + "\n";
             }
@@ -76,7 +82,7 @@ namespace OOP_Chess
             return figures;
         }
 
-        public void DrawBoard()
+        public void CreateBoard()
         {
             for(int i = 0; i < 8; i++)
             {
