@@ -96,7 +96,30 @@ namespace OOP_Chess
                     {
                         Height = new GridLength(1, GridUnitType.Star)
                     });
-                ChessBoardGrid.ShowGridLines = true;
+
+                for(int x = 0; x < 8; x++)
+                {
+                    for (int y = 0; y < 8; y++)
+                    {
+                        
+                        Rectangle rectangle = new Rectangle();
+                        rectangle.HorizontalAlignment = HorizontalAlignment.Stretch;
+                        rectangle.VerticalAlignment = VerticalAlignment.Stretch;
+                        rectangle.Fill = new SolidColorBrush(Color.FromRgb(255, 255, 128));
+                        if ((x + y) % 2 == 0)
+                        {
+                            rectangle.Fill = new SolidColorBrush(Color.FromRgb(255, 255, 128));
+                        }
+                        else
+                        {
+                            rectangle.Fill = new SolidColorBrush(Color.FromRgb(128, 64, 0));
+                        }
+                        Grid.SetColumn(rectangle, x);
+                        Grid.SetRow(rectangle, y);
+                        ChessBoardGrid.Children.Add(rectangle);
+                    }
+                }
+                //ChessBoardGrid.ShowGridLines = true;
             }
         }
     }
