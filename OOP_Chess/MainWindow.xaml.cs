@@ -46,6 +46,8 @@ namespace OOP_Chess
             ChessBoardGrid.Children.Add(rectangle);
         }
 
+        //private ImageSource
+
         public void CreateDictionaries()
         {
             columes.Add(0, "A");
