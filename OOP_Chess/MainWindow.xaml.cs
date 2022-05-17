@@ -20,15 +20,44 @@ namespace OOP_Chess
     /// </summary>
     public partial class MainWindow : Window
     {
+        Dictionary<int, String> columes = new Dictionary<int, string>();
+        Dictionary<int, String> rows = new Dictionary<int, string>();
+        
         List<Figure> figures;
 
         public MainWindow()
         {
             InitializeComponent();
             figures = CreateFigures();
-
+            CreateDictionaries();
             ShowTextChessBoard();
             CreateBoard();
+            DrawFigures(figures);
+        }
+
+        private void DrawFigures(List<Figure> figures)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CreateDictionaries()
+        {
+            columes.Add(0, "A");
+            columes.Add(1, "B");
+            columes.Add(2, "C");
+            columes.Add(3, "D");
+            columes.Add(4, "E");
+            columes.Add(5, "F");
+            columes.Add(6, "G");
+            columes.Add(7, "H");
+            rows.Add(0, "8");
+            rows.Add(1, "7");
+            rows.Add(2, "6");
+            rows.Add(3, "5");
+            rows.Add(4, "4");
+            rows.Add(5, "3");
+            rows.Add(6, "2");
+            rows.Add(7, "1");
         }
 
         public void ShowTextChessBoard()
@@ -103,6 +132,9 @@ namespace OOP_Chess
                     {
                         
                         Rectangle rectangle = new Rectangle();
+                        rectangle.Stroke = new SolidColorBrush(Colors.Black);
+                        rectangle.StrokeThickness = 3;
+                        rectangle.Margin = new Thickness(-1);
                         rectangle.HorizontalAlignment = HorizontalAlignment.Stretch;
                         rectangle.VerticalAlignment = VerticalAlignment.Stretch;
                         rectangle.Fill = new SolidColorBrush(Color.FromRgb(255, 255, 128));
