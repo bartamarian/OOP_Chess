@@ -37,7 +37,13 @@ namespace OOP_Chess
 
         private void DrawFigures(List<Figure> figures)
         {
-            //Properties.Resources.
+            Rectangle rectangle = new Rectangle();
+            rectangle.HorizontalAlignment = HorizontalAlignment.Stretch;
+            rectangle.VerticalAlignment = VerticalAlignment.Stretch;
+            //rectangle.Fill = new Brush
+            Grid.SetColumn(rectangle, 0);
+            Grid.SetRow(rectangle, 5);
+            ChessBoardGrid.Children.Add(rectangle);
         }
 
         public void CreateDictionaries()
