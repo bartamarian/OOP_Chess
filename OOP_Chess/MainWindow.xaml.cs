@@ -37,7 +37,7 @@ namespace OOP_Chess
 
         private void DrawFigures(List<Figure> figures)
         {
-            throw new NotImplementedException();
+            //Properties.Resources.
         }
 
         public void CreateDictionaries()
