@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,8 +21,8 @@ namespace OOP_Chess
     /// </summary>
     public partial class MainWindow : Window
     {
-        Dictionary<int, String> columes = new Dictionary<int, string>();
-        Dictionary<int, String> rows = new Dictionary<int, string>();
+        Dictionary<String, int> columes = new Dictionary<string, int>();
+        Dictionary<String, int> rows = new Dictionary<string, int>();
         
         List<Figure> figures;
 
@@ -37,35 +38,53 @@ namespace OOP_Chess
 
         private void DrawFigures(List<Figure> figures)
         {
+            foreach(var figure in figures)
+            {
+                DrawFigure(figure);
+            }
+        }
+
+        private void DrawFigure(Figure figure)
+        {
             Rectangle rectangle = new Rectangle();
             rectangle.HorizontalAlignment = HorizontalAlignment.Stretch;
             rectangle.VerticalAlignment = VerticalAlignment.Stretch;
-            //rectangle.Fill = new Brush
-            Grid.SetColumn(rectangle, 0);
-            Grid.SetRow(rectangle, 5);
+            rectangle.Margin = new Thickness(5);
+            rectangle.Fill = new ImageBrush(GetImage(figure.Resorce));
+            int indexCol = columes[figure.Position.Substring(0, 1)];
+
+            Grid.SetColumn(rectangle, 1);
+            Grid.SetRow(rectangle, 1);
             ChessBoardGrid.Children.Add(rectangle);
         }
 
-        //private ImageSource
+        private ImageSource GetImage(byte[] resource)
+        {
+            MemoryStream memoryStream = new MemoryStream(resource); //problemyneplechydropujeto
+            BitmapFrame bitmapFrame = BitmapFrame.Create(memoryStream);
+            Image image = new Image();
+            image.Source = bitmapFrame;
+            return image.Source;
+        }
 
         public void CreateDictionaries()
         {
-            columes.Add(0, "A");
-            columes.Add(1, "B");
-            columes.Add(2, "C");
-            columes.Add(3, "D");
-            columes.Add(4, "E");
-            columes.Add(5, "F");
-            columes.Add(6, "G");
-            columes.Add(7, "H");
-            rows.Add(0, "8");
-            rows.Add(1, "7");
-            rows.Add(2, "6");
-            rows.Add(3, "5");
-            rows.Add(4, "4");
-            rows.Add(5, "3");
-            rows.Add(6, "2");
-            rows.Add(7, "1");
+            columes.Add("A", 0);
+            columes.Add("B", 1);
+            columes.Add("C", 2);
+            columes.Add("D", 3);
+            columes.Add("E", 4);
+            columes.Add("F", 5);
+            columes.Add("G", 6);
+            columes.Add("H", 7);
+            rows.Add("8", 0);
+            rows.Add("7", 1);
+            rows.Add("6", 2);
+            rows.Add("5", 3);
+            rows.Add("4", 4);
+            rows.Add("3", 5);
+            rows.Add("2", 6);
+            rows.Add("1", 7);
         }
 
         public void ShowTextChessBoard()
