@@ -52,7 +52,7 @@ namespace OOP_Chess
             rectangle.Margin = new Thickness(5);
             rectangle.Fill = new ImageBrush(GetImage(figure.Resorce));
             int indexCol = columes[figure.Position.Substring(0, 1)];
-
+            int indexRow = rows[figure.Position.Substring(1, 1)];
             Grid.SetColumn(rectangle, 1);
             Grid.SetRow(rectangle, 1);
             ChessBoardGrid.Children.Add(rectangle);
