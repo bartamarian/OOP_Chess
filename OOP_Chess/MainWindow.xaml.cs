@@ -23,8 +23,8 @@ namespace OOP_Chess
     {
         Dictionary<String, int> columes = new Dictionary<string, int>();
         Dictionary<String, int> rows = new Dictionary<string, int>();
-        
         List<Figure> figures;
+        Figure selectedFigure;
 
         public MainWindow()
         {
@@ -64,7 +64,23 @@ namespace OOP_Chess
         {
             Rectangle rectangle = (Rectangle)sender; // Přetypování z object na rectangle
             Figure figure = (Figure)rectangle.Tag;
-            MessageBox.Show($"Klik na {figure}");
+            if(selectedFigure == null)
+            {
+                selectedFigure = figure;
+                rectangle.Margin = new Thickness(0);
+                rectangle.Stroke = new SolidColorBrush(Colors.Lime);
+                rectangle.StrokeThickness = 5;
+            }
+            else if(selectedFigure == figure)
+            {
+                rectangle.StrokeThickness = 0;
+                selectedFigure = null;
+            }
+            else
+            {
+
+            }
+            //MessageBox.Show($"Klik na {figure}");
         }
 
         private ImageSource GetImage(byte[] resource)
