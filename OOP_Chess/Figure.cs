@@ -95,7 +95,7 @@ namespace OOP_Chess
                     }
                     else
                     {
-                        return Properties.Resources.WhitePawn;
+                        return Properties.Resources.WhitPawn;
                     }
                 }
             } 

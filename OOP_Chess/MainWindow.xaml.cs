@@ -53,14 +53,23 @@ namespace OOP_Chess
             rectangle.Fill = new ImageBrush(GetImage(figure.Resorce));
             int indexCol = columes[figure.Position.Substring(0, 1)];
             int indexRow = rows[figure.Position.Substring(1, 1)];
-            Grid.SetColumn(rectangle, 1);
-            Grid.SetRow(rectangle, 1);
+            Grid.SetColumn(rectangle, indexCol);
+            Grid.SetRow(rectangle, indexRow);
             ChessBoardGrid.Children.Add(rectangle);
+            rectangle.Tag = figure;
+            rectangle.MouseDown += Rectangle_MouseDown;
+        }
+
+        private void Rectangle_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Rectangle rectangle = (Rectangle)sender; // Přetypování z object na rectangle
+            Figure figure = (Figure)rectangle.Tag;
+            MessageBox.Show($"Klik na {figure}");
         }
 
         private ImageSource GetImage(byte[] resource)
         {
-            MemoryStream memoryStream = new MemoryStream(resource); //problemyneplechydropujeto
+            MemoryStream memoryStream = new MemoryStream(resource); 
             BitmapFrame bitmapFrame = BitmapFrame.Create(memoryStream);
             Image image = new Image();
             image.Source = bitmapFrame;
