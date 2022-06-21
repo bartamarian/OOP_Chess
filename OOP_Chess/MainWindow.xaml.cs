@@ -57,10 +57,10 @@ namespace OOP_Chess
             Grid.SetRow(rectangle, indexRow);
             ChessBoardGrid.Children.Add(rectangle);
             rectangle.Tag = figure;
-            rectangle.MouseDown += Rectangle_MouseDown;
+            rectangle.MouseDown += Figure_MouseDown;
         }
 
-        private void Rectangle_MouseDown(object sender, MouseButtonEventArgs e)
+        private void Figure_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Rectangle rectangle = (Rectangle)sender; // Přetypování z object na rectangle
             Figure figure = (Figure)rectangle.Tag;
@@ -198,13 +198,20 @@ namespace OOP_Chess
                         {
                             rectangle.Fill = new SolidColorBrush(Color.FromRgb(128, 64, 0));
                         }
+                        rectangle.MouseDown += Board_MouseDown;
+
                         Grid.SetColumn(rectangle, x);
                         Grid.SetRow(rectangle, y);
                         ChessBoardGrid.Children.Add(rectangle);
                     }
                 }
-                //ChessBoardGrid.ShowGridLines = true;
             }
         }
+        private void Board_MouseDown(object sender, MouseEventArgs e)
+        {
+            MessageBox.Show("Klikni na desku");
+        }
+
+        //private void
     }
 }
