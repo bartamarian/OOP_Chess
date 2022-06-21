@@ -212,6 +212,9 @@ namespace OOP_Chess
             MessageBox.Show("Klikni na desku");
         }
 
-        //private void
+        private void ChessBoardGrid_MouseDown(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }
